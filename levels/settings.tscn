@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://bynp4n2nktam8"]
+
+[ext_resource type="Script" path="res://levels/settings.gd" id="1_uu5y7"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_3mw81"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_uu5y7")
+
+[node name="setting_screen" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="setting_screen"]
+position = Vector2(576, 324)
+scale = Vector2(1152, 648)
+texture = SubResource("CanvasTexture_3mw81")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 288.0
+offset_top = 488.0
+offset_right = 864.0
+offset_bottom = 608.0
+text = "Back to menu"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

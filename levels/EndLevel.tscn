@@ -1,0 +1,63 @@
+[gd_scene load_steps=11 format=3 uid="uid://dv3tlqasm1bb"]
+
+[ext_resource type="PackedScene" uid="uid://d34xconw0p6m2" path="res://characters/player/player.tscn" id="1_2gwa8"]
+[ext_resource type="Texture2D" uid="uid://bd11xvfvqve3y" path="res://assets/levels/podloga.png" id="2_oc6iu"]
+[ext_resource type="Texture2D" uid="uid://bo31hs5gl107h" path="res://assets/levels/kamienie.png" id="3_tbwbp"]
+[ext_resource type="Script" path="res://levels/bomb.gd" id="4_d4r20"]
+[ext_resource type="Texture2D" uid="uid://ipqj1sdhdqlg" path="res://assets/levels/bomba.png" id="5_nif7d"]
+[ext_resource type="Texture2D" uid="uid://dmam8oorwp135" path="res://assets/levels/backgroundv1.png" id="6_cqg8j"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s1lkx"]
+texture = ExtResource("2_oc6iu")
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o3aqe"]
+texture = ExtResource("3_tbwbp")
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_wlcs0"]
+physics_layer_0/collision_layer = 2
+sources/0 = SubResource("TileSetAtlasSource_s1lkx")
+sources/1 = SubResource("TileSetAtlasSource_o3aqe")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_31x51"]
+size = Vector2(16, 18)
+
+[node name="EndLevel" type="Node2D"]
+
+[node name="Backgroundv1" type="Sprite2D" parent="."]
+position = Vector2(24, -24)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("6_cqg8j")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(25, -20)
+zoom = Vector2(4, 4)
+
+[node name="Player" parent="." instance=ExtResource("1_2gwa8")]
+position = Vector2(-64, 16)
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_wlcs0")
+format = 2
+layer_0/tile_data = PackedInt32Array(262138, 1, 0, 262139, 1, 0, 262140, 1, 0, 262141, 1, 0, 196610, 1, 0, 196609, 1, 0, 196608, 1, 0, 262143, 1, 0, 262142, 1, 0, 196611, 1, 0, 196612, 1, 0, 196613, 1, 0, 196614, 1, 0, 196615, 1, 0, 196616, 1, 0, 196617, 1, 0, 131082, 1, 0, 65546, 1, 0, 196618, 1, 0, 10, 1, 0, -65526, 1, 0, -131062, 1, 0, -196598, 1, 0, -262134, 1, 0, -327670, 1, 0, -393206, 1, 0, -458743, 1, 0, -458742, 1, 0, -458744, 1, 0, -458745, 1, 0, -458746, 1, 0, -458747, 1, 0, -458748, 1, 0, -458749, 1, 0, -458750, 1, 0, -458751, 1, 0, -458752, 1, 0, -393217, 1, 0, -393218, 1, 0, -393219, 1, 0, -393220, 1, 0, -393221, 1, 0, -393222, 1, 0, -393223, 1, 0, -327688, 1, 0, -393224, 1, 0, -262152, 1, 0, -196616, 1, 0, -131080, 1, 0, -65544, 1, 0, -8, 1, 0, 65528, 1, 0, 131064, 1, 0, 196600, 1, 0, 262136, 1, 0, 262137, 1, 0, 196601, 0, 0, 196602, 0, 0, 196603, 0, 0, 196604, 0, 0, 196605, 0, 0, 196606, 0, 0, 196607, 0, 0, 131072, 0, 0, 131073, 0, 0, 131074, 0, 0, 131075, 0, 0, 131076, 0, 0, 131077, 0, 0, 131078, 0, 0, 131079, 0, 0, 131080, 0, 0, 131081, 0, 0)
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+script = ExtResource("4_d4r20")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(80, 24)
+shape = SubResource("RectangleShape2D_31x51")
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+position = Vector2(80, 24)
+texture = ExtResource("5_nif7d")
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

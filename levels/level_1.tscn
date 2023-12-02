@@ -1,0 +1,70 @@
+[gd_scene load_steps=10 format=3 uid="uid://xc2p53mtklq5"]
+
+[ext_resource type="Texture2D" uid="uid://bd11xvfvqve3y" path="res://assets/levels/podloga.png" id="1_blmst"]
+[ext_resource type="Script" path="res://levels/level.gd" id="1_epr7m"]
+[ext_resource type="Texture2D" uid="uid://bo31hs5gl107h" path="res://assets/levels/kamienie.png" id="2_knrsc"]
+[ext_resource type="PackedScene" uid="uid://d34xconw0p6m2" path="res://characters/player/player.tscn" id="3_w5335"]
+[ext_resource type="PackedScene" uid="uid://c3cup58ceuiju" path="res://characters/block/block.tscn" id="4_7tfce"]
+[ext_resource type="PackedScene" uid="uid://bxi4vqt0fji1l" path="res://characters/enemies/enemy.tscn" id="5_3n7ra"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l26uy"]
+texture = ExtResource("1_blmst")
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6gwu0"]
+texture = ExtResource("2_knrsc")
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_glvux"]
+physics_layer_0/collision_layer = 2
+sources/0 = SubResource("TileSetAtlasSource_l26uy")
+sources/1 = SubResource("TileSetAtlasSource_6gwu0")
+
+[node name="Level1" type="Node2D"]
+position = Vector2(176, 96)
+script = ExtResource("1_epr7m")
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_glvux")
+format = 2
+layer_0/tile_data = PackedInt32Array(196607, 0, 0, 131073, 0, 0, 131074, 0, 0, -196604, 1, 0, -131068, 1, 0, -65532, 1, 0, -131081, 1, 0, -65545, 1, 0, -9, 1, 0, 65527, 1, 0, 131063, 1, 0, 196599, 1, 0, 196600, 0, 0, 196601, 0, 0, 196602, 0, 0, 196603, 0, 0, 131075, 0, 0, -196617, 1, 0, -196616, 1, 0, -196615, 1, 0, -196614, 1, 0, -196613, 1, 0, -196612, 1, 0, -196611, 1, 0, -196610, 1, 0, -196609, 1, 0, -262144, 1, 0, -262143, 1, 0, -262142, 1, 0, -262141, 1, 0, -262140, 1, 0, -262154, 1, 0, -196618, 1, 0, -131082, 1, 0, -65546, 1, 0, -10, 1, 0, 65526, 1, 0, 131062, 1, 0, 196598, 1, 0, 262134, 1, 0, 262135, 1, 0, 262136, 1, 0, 262137, 1, 0, 262138, 1, 0, 262139, 1, 0, 262143, 1, 0, 196608, 0, 0, 196609, 1, 0, 196610, 1, 0, 196611, 1, 0, 196612, 1, 0, 196613, 1, 0, 65541, 1, 0, 5, 1, 0, -65531, 1, 0, -131067, 1, 0, -196603, 1, 0, -262139, 1, 0, -327675, 1, 0, -327676, 1, 0, -327677, 1, 0, -327678, 1, 0, -327679, 1, 0, -327680, 1, 0, -262145, 1, 0, -262146, 1, 0, -262147, 1, 0, -262148, 1, 0, -262149, 1, 0, -262150, 1, 0, -262151, 1, 0, -262152, 1, 0, -262153, 1, 0, -327690, 1, 0, -327689, 1, 0, -327688, 1, 0, -327687, 1, 0, -327686, 1, 0, -327685, 1, 0, -327684, 1, 0, -327683, 1, 0, -327682, 1, 0, -327681, 1, 0, -393216, 1, 0, -393215, 1, 0, -393214, 1, 0, -393213, 1, 0, -393212, 1, 0, -393211, 1, 0, -393210, 1, 0, -327674, 1, 0, -262138, 1, 0, -196602, 1, 0, -131066, 1, 0, -65530, 1, 0, 6, 1, 0, 65542, 1, 0, 131078, 1, 0, 196614, 1, 0, 262150, 1, 0, 262149, 1, 0, 262148, 1, 0, 262147, 1, 0, 262146, 1, 0, 262145, 1, 0, 262144, 1, 0, 327679, 1, 0, 327678, 1, 0, 327677, 1, 0, 327676, 1, 0, 327675, 1, 0, 327674, 1, 0, 327673, 1, 0, 327672, 1, 0, 327671, 1, 0, 327670, 1, 0, 327669, 1, 0, 262133, 1, 0, 196597, 1, 0, 131061, 1, 0, 65525, 1, 0, -11, 1, 0, -65547, 1, 0, -131083, 1, 0, -196619, 1, 0, -262155, 1, 0, -327691, 1, 0, 262140, 1, 0, 262141, 1, 0, 262142, 1, 0, 196604, 0, 0, 196605, 0, 0, 196606, 0, 0, 131077, 1, 0, 131076, 1, 0, 65540, 1, 0, 4, 1, 0)
+
+[node name="block" parent="." instance=ExtResource("4_7tfce")]
+position = Vector2(-32, 8)
+
+[node name="Enemy" parent="." groups=["enemy", "zus"] instance=ExtResource("5_3n7ra")]
+position = Vector2(24, 16)
+
+[node name="Player" parent="." instance=ExtResource("3_w5335")]
+position = Vector2(-96, 8)
+
+[node name="Container" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = -64.0
+offset_top = -32.0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Container"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label2" type="Label" parent="Container/VBoxContainer"]
+layout_mode = 2
+text = "Level Complite!"
+
+[node name="Label" type="Label" parent="Container/VBoxContainer"]
+layout_mode = 2
+text = "Click any button to continue.."

@@ -1,0 +1,113 @@
+[gd_scene load_steps=13 format=3 uid="uid://24n6tm0afrkw"]
+
+[ext_resource type="Script" path="res://levels/menu.gd" id="1_kddsr"]
+[ext_resource type="Texture2D" uid="uid://d0ij0vgemvx4q" path="res://levels/backgroundv2.png" id="2_balrx"]
+[ext_resource type="FontFile" uid="uid://cjxyk71soh8yf" path="res://levels/8-bit_Arcade_In.ttf" id="3_fbxt8"]
+[ext_resource type="AudioStream" uid="uid://drsvvert7a7m6" path="res://levels/TalkingCuteChiptune.mp3" id="4_g21pk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c58m2"]
+bg_color = Color(0.458824, 0.564706, 0.984314, 0.45098)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p0lny"]
+bg_color = Color(0.701961, 0.701961, 0.701961, 0.627451)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m7l2q"]
+bg_color = Color(0, 0.243137, 0.101961, 0.45098)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a1e80"]
+bg_color = Color(0.701961, 0.701961, 0.701961, 0.627451)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uuhe2"]
+bg_color = Color(0.113725, 0.603922, 0.607843, 0.45098)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iimvk"]
+bg_color = Color(0.701961, 0.701961, 0.701961, 0.627451)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hlstn"]
+bg_color = Color(0.137255, 0.698039, 0.537255, 0.588235)
+
+[sub_resource type="LabelSettings" id="LabelSettings_0m845"]
+font = ExtResource("3_fbxt8")
+font_size = 35
+font_color = Color(0.929412, 0.87451, 0.764706, 1)
+outline_color = Color(0.337255, 0.490196, 0.266667, 1)
+shadow_color = Color(0, 0, 0, 0.847059)
+
+[node name="Menu" type="CanvasLayer"]
+script = ExtResource("1_kddsr")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = 1.0
+offset_right = 15.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_balrx")
+expand_mode = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 38.0
+offset_right = 1.0
+offset_bottom = 38.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="Start" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_fbxt8")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_c58m2")
+theme_override_styles/hover = SubResource("StyleBoxFlat_p0lny")
+text = "Start"
+
+[node name="Quit" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_fbxt8")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_m7l2q")
+theme_override_styles/hover = SubResource("StyleBoxFlat_a1e80")
+text = "Quit"
+
+[node name="Settings" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_fbxt8")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_uuhe2")
+theme_override_styles/hover = SubResource("StyleBoxFlat_iimvk")
+text = "Settings"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_g21pk")
+volume_db = -10.0
+autoplay = true
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 22.0
+offset_top = 41.0
+offset_right = -10.0
+offset_bottom = -103.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_hlstn")
+text = "The last sunset"
+label_settings = SubResource("LabelSettings_0m845")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]

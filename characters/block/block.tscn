@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://c3cup58ceuiju"]
+
+[ext_resource type="Script" path="res://characters/block/block.gd" id="1_1hv4l"]
+[ext_resource type="Texture2D" uid="uid://eng7bb4eyo8b" path="res://assets/block/blok spadanie.png" id="1_weyko"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fjhyn"]
+size = Vector2(16, 16)
+
+[node name="block" type="CharacterBody2D" groups=["moveable"]]
+collision_layer = 4
+collision_mask = 13
+script = ExtResource("1_1hv4l")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(8, 8)
+texture = ExtResource("1_weyko")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(8, 8)
+shape = SubResource("RectangleShape2D_fjhyn")
+
+[node name="BasicRay" type="RayCast2D" parent="."]
+position = Vector2(8, 8)
+target_position = Vector2(0, 16)
+collision_mask = 15
+
+[node name="IsOnFloor" type="RayCast2D" parent="."]
+position = Vector2(8, 16)
+target_position = Vector2(0, 3)
+collision_mask = 15
+collide_with_areas = true

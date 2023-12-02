@@ -1,0 +1,120 @@
+[gd_scene load_steps=28 format=3 uid="uid://1qlwy8tkn8xu"]
+
+[ext_resource type="PackedScene" uid="uid://d34xconw0p6m2" path="res://characters/player/player.tscn" id="1_apwpb"]
+[ext_resource type="Texture2D" uid="uid://cmjosp5xi4iop" path="res://levels/backgroundv1.png" id="1_kftxj"]
+[ext_resource type="Texture2D" uid="uid://bd11xvfvqve3y" path="res://assets/levels/podloga.png" id="1_n7nx3"]
+[ext_resource type="Texture2D" uid="uid://debl4uhv5j25e" path="res://assets/tlo/blokzdziuratransparent.png" id="1_yx7kc"]
+[ext_resource type="Texture2D" uid="uid://ckynvfcybh2s6" path="res://assets/tlo/tlo1.png" id="2_eqa2l"]
+[ext_resource type="Texture2D" uid="uid://bo31hs5gl107h" path="res://assets/levels/kamienie.png" id="2_hi8sl"]
+[ext_resource type="Texture2D" uid="uid://dbvwxwwpjpi4l" path="res://assets/tlo/3/tileset3 tlo1.png" id="3_52wfl"]
+[ext_resource type="PackedScene" uid="uid://c3cup58ceuiju" path="res://characters/block/block.tscn" id="4_q2jl6"]
+[ext_resource type="Texture2D" uid="uid://d34c1jwbugp42" path="res://assets/tlo/3/tileset3 tlo2.png" id="4_xhpc5"]
+[ext_resource type="Texture2D" uid="uid://brf4t351s06dl" path="res://assets/tlo/3/tileset3 tlo3.png" id="5_tf42x"]
+[ext_resource type="PackedScene" uid="uid://bxi4vqt0fji1l" path="res://characters/enemies/enemy.tscn" id="5_x6hrt"]
+[ext_resource type="PackedScene" uid="uid://bayx02jgx6ufp" path="res://characters/ladder/ladder.tscn" id="6_kt87d"]
+[ext_resource type="Texture2D" uid="uid://ngsa1r60n6qf" path="res://assets/tlo/3/tileset3 tlo4.png" id="6_pgvw8"]
+[ext_resource type="PackedScene" uid="uid://bq46qy4gdvwyl" path="res://characters/mud/wheet.tscn" id="7_d83gx"]
+[ext_resource type="AudioStream" uid="uid://drsvvert7a7m6" path="res://levels/TalkingCuteChiptune.mp3" id="8_v4ul5"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6lf2y"]
+texture = ExtResource("1_yx7kc")
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e01ch"]
+texture = ExtResource("2_eqa2l")
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d70qb"]
+texture = ExtResource("3_52wfl")
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y6rr5"]
+texture = ExtResource("4_xhpc5")
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ii3nd"]
+texture = ExtResource("5_tf42x")
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mnrca"]
+texture = ExtResource("6_pgvw8")
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_noiwu"]
+sources/0 = SubResource("TileSetAtlasSource_6lf2y")
+sources/1 = SubResource("TileSetAtlasSource_e01ch")
+sources/2 = SubResource("TileSetAtlasSource_d70qb")
+sources/3 = SubResource("TileSetAtlasSource_y6rr5")
+sources/4 = SubResource("TileSetAtlasSource_ii3nd")
+sources/5 = SubResource("TileSetAtlasSource_mnrca")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vx8p0"]
+texture = ExtResource("1_n7nx3")
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mnlkn"]
+texture = ExtResource("2_hi8sl")
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_rb4yh"]
+physics_layer_0/collision_layer = 2
+sources/2 = SubResource("TileSetAtlasSource_vx8p0")
+sources/3 = SubResource("TileSetAtlasSource_mnlkn")
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_30ltr"]
+scenes/1/scene = ExtResource("7_d83gx")
+scenes/2/scene = ExtResource("6_kt87d")
+
+[sub_resource type="TileSet" id="TileSet_v6t4j"]
+sources/1 = SubResource("TileSetScenesCollectionSource_30ltr")
+
+[node name="TestLevel" type="Node2D"]
+position = Vector2(176, 96)
+
+[node name="Backgroundv1" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-32, -8)
+texture = ExtResource("1_kftxj")
+
+[node name="Background" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_noiwu")
+format = 2
+layer_0/tile_data = PackedInt32Array(-131080, 1, 0, -131079, 1, 0, -131078, 1, 0, -131077, 1, 0, -131076, 1, 0, -131075, 1, 0, -131074, 1, 0, -131073, 1, 0, -196608, 1, 0, -196607, 1, 0, -196605, 1, 0, -131069, 1, 0, -65533, 1, 0, 3, 1, 0, 65539, 1, 0, 2, 1, 0, 1, 1, 0, 0, 1, 0, 65535, 1, 0, 65534, 1, 0, 65533, 1, 0, 65532, 1, 0, 65531, 1, 0, 131067, 1, 0, 131064, 1, 0, 65528, 1, 0, -6, 1, 0, -7, 1, 0, -8, 1, 0, -65544, 1, 0, -65543, 1, 0, -65541, 1, 0, -5, 1, 0, -4, 1, 0, -65540, 1, 0, -65539, 1, 0, -65538, 1, 0, -65537, 1, 0, -131072, 1, 0, -131071, 1, 0, -131070, 1, 0, -3, 1, 0, -196613, 1, 0, -196614, 1, 0, -65542, 0, 0, -196606, 0, 0, 65529, 3, 0, 65530, 5, 0, 131065, 4, 0, 131066, 2, 0, -196612, 1, 0, -196611, 1, 0, -196610, 1, 0, -196609, 1, 0, -262144, 1, 0, -262143, 1, 0, -262142, 1, 0, -262150, 1, 0, -262149, 1, 0, -262148, 1, 0, -262147, 1, 0, -262146, 1, 0, -262145, 1, 0, -327680, 1, 0, -327679, 1, 0, -327678, 1, 0, -327677, 1, 0, -327676, 1, 0, -327675, 1, 0, -262139, 1, 0, -196603, 1, 0, -196604, 1, 0, -262140, 1, 0, -262141, 1, 0, -131068, 1, 0, -65532, 1, 0, 4, 1, 0, 65540, 1, 0, 131076, 1, 0, 196612, 1, 0, 196611, 1, 0, 196610, 1, 0, 196609, 1, 0, 131063, 1, 0, 131062, 1, 0, 65526, 1, 0, 65527, 1, 0, -9, 1, 0, -10, 1, 0, -65546, 1, 0, -65545, 1, 0, -131081, 1, 0, -131082, 1, 0, -196618, 1, 0, -196617, 1, 0, -196616, 1, 0, -196615, 1, 0, 196608, 1, 0, 262143, 1, 0, 262142, 1, 0, 262141, 1, 0, 262140, 1, 0, 262139, 1, 0, 262138, 1, 0, 262137, 1, 0, 262136, 1, 0, 262135, 1, 0, 262134, 1, 0, 196598, 1, 0, -65536, 0, 0, -65534, 0, 0, -65535, 1, 0, -1, 1, 0)
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_rb4yh")
+format = 2
+layer_0/tile_data = PackedInt32Array(65536, 2, 0, 131071, 2, 0, 65537, 2, 0, 65538, 2, 0, 196605, 3, 0, 196606, 3, 0, 196607, 3, 0, 131072, 3, 0, 131073, 3, 0, 131074, 3, 0, 196599, 2, 0, 196600, 2, 0, 196601, 2, 0, 196602, 2, 0, 196603, 2, 0, 131075, 2, 0, -262154, 3, 0, 196613, 3, 0, 131077, 3, 0, 65541, 3, 0, 5, 3, 0, -65531, 3, 0, -131067, 3, 0, -262151, 3, 0, -262152, 3, 0, -262153, 3, 0, -327690, 3, 0, -327689, 3, 0, -327688, 3, 0, -327687, 3, 0, -327686, 3, 0, -327685, 3, 0, -327684, 3, 0, -327683, 3, 0, -327682, 3, 0, -327681, 3, 0, -393216, 3, 0, -393215, 3, 0, -393214, 3, 0, -393213, 3, 0, -393212, 3, 0, -393211, 3, 0, -393210, 3, 0, -327674, 3, 0, -262138, 3, 0, -196602, 3, 0, -131066, 3, 0, -65530, 3, 0, 6, 3, 0, 65542, 3, 0, 131078, 3, 0, 196614, 3, 0, 262150, 3, 0, 262149, 3, 0, 262148, 2, 0, 262147, 2, 0, 262146, 2, 0, 262145, 2, 0, 262144, 2, 0, 327679, 2, 0, 327678, 2, 0, 327677, 2, 0, 327676, 2, 0, 327675, 2, 0, 327674, 2, 0, 327673, 2, 0, 327672, 2, 0, 327671, 2, 0, 327670, 2, 0, 327669, 3, 0, 262133, 3, 0, 196597, 3, 0, 131061, 3, 0, 65525, 3, 0, -11, 3, 0, -65547, 3, 0, -131083, 3, 0, -196619, 3, 0, -262155, 3, 0, -327691, 3, 0, 131068, 2, 0, 131069, 2, 0, 131070, 2, 0, 196604, 3, 0)
+
+[node name="block" parent="." instance=ExtResource("4_q2jl6")]
+position = Vector2(-64, 0)
+
+[node name="Enemy" parent="." instance=ExtResource("5_x6hrt")]
+position = Vector2(-120, -32)
+
+[node name="Ladder" parent="." instance=ExtResource("6_kt87d")]
+position = Vector2(-40, 8)
+
+[node name="OtherTiles" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_v6t4j")
+format = 2
+layer_0/tile_data = PackedInt32Array(-3, 1, 131072, -65539, 1, 131072, -65538, 1, 131072, -131075, 1, 65536, 65539, 1, 65536, -2, 1, 65536)
+
+[node name="Wheet" parent="." instance=ExtResource("7_d83gx")]
+visible = false
+position = Vector2(24, 16)
+
+[node name="Player" parent="." instance=ExtResource("1_apwpb")]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_v4ul5")
+volume_db = -20.0
+autoplay = true
+
+[connection signal="area_entered" from="Wheet" to="block" method="_on_wheet_area_entered"]

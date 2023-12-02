@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bayx02jgx6ufp"]
+
+[ext_resource type="Script" path="res://characters/ladder/ladder.gd" id="1_jhulw"]
+[ext_resource type="Texture2D" uid="uid://c4bpxuuaam1e5" path="res://assets/ladder/drabina bez polki.png" id="1_rwoss"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4ciav"]
+size = Vector2(16, 16)
+
+[node name="Ladder" type="Area2D" groups=["permeable"]]
+collision_layer = 16
+script = ExtResource("1_jhulw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_4ciav")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_rwoss")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
